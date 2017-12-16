@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 
 /**
 * Generated class for the WritePage page.
@@ -10,7 +11,6 @@ import { AlertController } from 'ionic-angular';
 * Ionic pages and navigation.
 */
 
-@IonicPage()
 @Component({
     selector: 'page-write',
     templateUrl: 'write.html',
@@ -19,7 +19,7 @@ export class WritePage {
     title: string;
     content: string;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private alertCtrl: AlertController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private alertCtrl: AlertController, public platform: Platform) {
     }
 
     ionViewDidLoad() {
@@ -34,6 +34,10 @@ export class WritePage {
             title: this.title,
             content: this.content
         });
+
+        if (!this.platform.is('core')) {
+            url = 'http://changsune.cafe24.com/sucol1/write.php';
+        }
 
         this.http.post(url, params).map(res => res.json()).subscribe(data => {
             console.log(data);

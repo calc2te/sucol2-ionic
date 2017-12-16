@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/timeout';
 import { NavController } from 'ionic-angular';
 import { DetailPage } from '../detail/detail';
 import { WritePage } from '../write/write';
+import { Platform } from 'ionic-angular';
 
 @Component({
     selector: 'page-board',
@@ -15,7 +18,7 @@ export class BoardPage {
     count = 10;
     total_count = 0;
 
-    constructor(public navCtrl: NavController, public http: Http) {
+    constructor(public navCtrl: NavController, public http: Http, public platform: Platform) {
         /*
         for (let i = 0; i < 30; i++) {
             this.items.push( this.items.length );
@@ -32,7 +35,13 @@ export class BoardPage {
             count: count
         });
 
+        if (!this.platform.is('core')) {
+            url = 'http://changsune.cafe24.com/sucol1/getList.php';
+        }
+
         this.http.post(url, params).map(res => res.json()).subscribe(data => {
+            console.log(data);
+
             let length = data.result.length;
 
             for (let i = 0; i < length; i++) {
@@ -46,7 +55,7 @@ export class BoardPage {
 
             this.total_count = data.total_count;
             this.index += this.count;
-        });
+        },onerror => { console.log(onerror) });
     }
 
     itemSelected(i) {

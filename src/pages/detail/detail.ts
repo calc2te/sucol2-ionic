@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
+import { Platform } from 'ionic-angular';
 
 /**
 * Generated class for the DetailPage page.
@@ -9,7 +10,6 @@ import { Http } from '@angular/http';
 * Ionic pages and navigation.
 */
 
-@IonicPage()
 @Component({
     selector: 'page-detail',
     templateUrl: 'detail.html',
@@ -20,7 +20,7 @@ export class DetailPage {
     private writer: any;
     private comment: any[] = [];
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public platform: Platform) {
         console.log(navParams);
         console.log(navParams.get("no"));
 
@@ -30,6 +30,10 @@ export class DetailPage {
         let params = JSON.stringify({
             no: no
         });
+
+        if (!this.platform.is('core')) {
+            url = 'http://changsune.cafe24.com/sucol1/board.php';
+        }
 
         this.http.post(url, params).map(res => res.json()).subscribe(data => {
             console.log(data);
