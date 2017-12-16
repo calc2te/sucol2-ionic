@@ -1,0 +1,26 @@
+{
+  "name": "sucol1",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+        "path":"/imgAPI",
+        "proxyUrl":"http://changsune.cafe24.com/sucol1/img.php"
+    },
+    {
+        "path":"/get/list",
+        "proxyUrl":"http://changsune.cafe24.com/sucol1/getList.php"
+    },
+    {
+        "path":"/board",
+        "proxyUrl":"http://changsune.cafe24.com/sucol1/board.php"
+    },
+    {
+        "path":"/lib/write",
+        "proxyUrl":"http://changsune.cafe24.com/sucol1/write.php"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<ion-content>
+
+    <ion-list>
+        <button ion-item *ngFor="let i of items" (click)="itemSelected(i)">
+            <h2>{{i.title}}</h2>
+            <h3>{{i.writer}}</h3>
+            <p>{{i.comment}}</p>
+
+            <div class="bottom-area">
+                <ion-icon class="small-icon" name="text"></ion-icon>
+                <span class="small-text">{{i.comment_cnt}}</span>
+            </div>
+        </button>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-fab bottom right>
+        <button ion-fab class="fab" (click)="write()"><ion-icon name="create"></ion-icon></button>
+    </ion-fab>
+
+</ion-content>
