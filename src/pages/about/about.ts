@@ -39,11 +39,12 @@ export class AboutPage {
         },onerror => { console.log(onerror) });
     }
 
-    private openModal(i) {
+
+    public openModal(i) {
         let modal = this.modalCtrl.create(GalleryModal, {
           photos: this.images,
           initialSlide: i,
         });
         modal.present();
-      }
+    }
 }
