@@ -4,6 +4,8 @@ import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { AuthPage } from'../pages/auth/auth';
+import { LoginPage } from '../pages/login/login';
 import { AboutPage } from '../pages/about/about';
 import { BoardPage } from '../pages/board/board';
 import { HomePage } from '../pages/home/home';
@@ -20,10 +22,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import * as ionicGalleryModal from 'ionic-gallery-modal';
 import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
     MyApp,
+    AuthPage,
+    LoginPage,
     AboutPage,
     BoardPage,
     HomePage,
@@ -42,6 +47,8 @@ import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    AuthPage,
+    LoginPage,
     AboutPage,
     BoardPage,
     HomePage,
@@ -56,7 +63,8 @@ import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
     {
         provide: HAMMER_GESTURE_CONFIG,
         useClass: ionicGalleryModal.GalleryModalHammerConfig,
-    }
+    },
+    AuthServiceProvider
   ]
 })
 export class AppModule {}

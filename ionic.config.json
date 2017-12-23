@@ -7,6 +7,10 @@
   },
   "proxies": [
     {
+        "path":"/login",
+        "proxyUrl":"http://changsune.cafe24.com/sucol1/getLogin.php"
+    },
+    {
         "path":"/imgAPI",
         "proxyUrl":"http://changsune.cafe24.com/sucol1/img.php"
     },

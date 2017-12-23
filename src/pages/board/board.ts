@@ -46,6 +46,7 @@ export class BoardPage {
 
             for (let i = 0; i < length; i++) {
                 this.items.push({
+                    no: data.result[i].no,
                     title: data.result[i].title,
                     writer: data.result[i].user_no,
                     comment: data.result[i].comment,
@@ -60,7 +61,7 @@ export class BoardPage {
 
     itemSelected(i) {
         this.navCtrl.push(DetailPage, {
-            no: i,
+            no: i.no,
         });
     }
 
