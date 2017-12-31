@@ -20,6 +20,8 @@ export class DetailPage {
     private writer: any;
     private comment: any[] = [];
 
+    private cmt_content: any;
+
     constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public platform: Platform) {
         //console.log(navParams);
         //console.log(navParams.get("no"));
@@ -58,6 +60,10 @@ export class DetailPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad DetailPage');
+    }
+
+    public transform(str: string) {
+        return str.replace(/(?:\r\n|\r|\n)/g, '<br />');
     }
 
 }

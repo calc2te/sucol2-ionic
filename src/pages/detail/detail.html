@@ -16,15 +16,37 @@ Ionic pages and navigation.
             {{title}}
         </ion-card-header>
         <ion-card-content>
-            <p class="writer gray">{{writer}}</p>
-            {{content}}
+            <p class="writer gray box-writer">{{writer}}</p>
+            <p class="box-content">{{content}}</p>
         </ion-card-content>
     </ion-card>
 
     <ion-card *ngFor="let c of comment">
         <ion-card-content>
             <p class="comment-writer gray">{{c.writer}}</p>
-            <p class="comment-comment">{{c.comment}}</p>
+            <p class="comment-comment box-content">{{c.comment}}</p>
         </ion-card-content>
     </ion-card>
+
+    <!-- comment -->
+    <p class="comment-label">댓글</p>
+
+    <div class="comment-box">
+        <ion-textarea [(ngModel)]="cmt_content" autosize class="write-area"></ion-textarea>
+
+        <button ion-button full>댓글달기</button>
+    </div>
 </ion-content>
+
+<!--
+<ion-footer>
+    <ion-toolbar>
+        <ion-textarea [(ngModel)]="cmt_content" autosize class="write-area"></ion-textarea>
+        <ion-buttons end>
+            <button ion-button icon-right color="royal">
+                <ion-icon name="send"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
+-->
